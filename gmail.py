@@ -13,7 +13,7 @@
 # login()
 from selenium import webdriver
 from time import sleep
-
+from selenium.webdriver import ActionChains
 class Google:
 
  def __init__(self):
@@ -29,5 +29,10 @@ class Google:
   sleep(2)
   self.driver.get('https://drive.google.com/drive/folders/1GdsRlvo2T-DUzP-RDtBYRkAyhSZi2jPH')
   sleep(5)
+  self.driver.find_element_by_xpath("//button[@guidedhelpid='new_menu_button']").click()
+  fileupload=self.driver.find_element_by_xpath("//div[contains(text(),'File upload')]")
+  actions=ActionChains(self.driver)
+  sleep(2)
+  actions.move_to_element(fileupload).click().perform().send_keys('/Users/surenderpal/Downloads/sukhoi.jpg')
 
 mylike= Google()
